@@ -19,7 +19,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Property;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -34,9 +36,13 @@ public class NowPlayingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Song song = intent.getParcelableExtra("Mysong");
 
+        TextView mSongName = findViewById(R.id.playing_song_name);
+        TextView mSingerName = findViewById(R.id.playing_singer_name);
+        ImageView mImageResourceId= findViewById(R.id.playing_song_item_icon);
+
         //now collect all property values
-        String mSongName = song.getSongName();
-        String mSingerName = song.getSingerName();
-        Integer mImageResourceId = song.getImageResourceID();
+        mSongName.setText("Song Name " + song.getSongName());
+        mSingerName.setText("Singer Name " + song.getSingerName());
+        mImageResourceId.setImageResource(song.getImageResourceID());
     }
 }
