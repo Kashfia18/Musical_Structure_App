@@ -19,6 +19,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Property;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,17 +35,26 @@ public class NowPlayingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
 
-        //collect our intent
-        Intent intent = getIntent();
-        Song song = intent.getParcelableExtra("Mysong");
-
         TextView mSongName = findViewById(R.id.playing_song_name);
         TextView mSingerName = findViewById(R.id.playing_singer_name);
         ImageView mImageResourceId= findViewById(R.id.playing_song_item_icon);
+        ImageButton backButton = findViewById(R.id.back_button);
+
+        //collect our intent
+        Intent intent = getIntent();
+        Song song = intent.getParcelableExtra("Mysong");
 
         //now collect all property values
         mSongName.setText("Song Name " + song.getSongName());
         mSingerName.setText("Singer Name " + song.getSingerName());
         mImageResourceId.setImageResource(song.getImageResourceID());
+
+        backButton. setOnClickListener(new View.OnClickListener() {
+            public void onClick (View view){
+                Intent intent=new Intent (NowPlayingActivity.this, PlaylistsActivity.class);
+                startActivity (intent);
+            }
+
+        } );
     }
 }
