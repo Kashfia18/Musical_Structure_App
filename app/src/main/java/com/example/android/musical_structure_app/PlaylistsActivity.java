@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -70,6 +71,7 @@ public class PlaylistsActivity extends AppCompatActivity {
                 Object listItem = listView.getItemAtPosition(position);
                 Intent intent = new Intent(PlaylistsActivity.this, NowPlayingActivity.class);
                 intent.putExtra("Mysong", (Parcelable) listItem);
+                intent.putExtra("positon",position);
                 startActivity(intent);
             }
         });

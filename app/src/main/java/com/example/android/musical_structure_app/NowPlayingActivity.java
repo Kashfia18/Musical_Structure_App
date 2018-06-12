@@ -17,11 +17,13 @@ package com.example.android.musical_structure_app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Property;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,6 +34,8 @@ import java.util.ArrayList;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
+    ArrayList<Song> listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,22 +44,25 @@ public class NowPlayingActivity extends AppCompatActivity {
         TextView mSongName = findViewById(R.id.playing_song_name);
         TextView mSingerName = findViewById(R.id.playing_singer_name);
         ImageView mImageResourceId= findViewById(R.id.playing_song_item_icon);
-        ImageButton backButton = findViewById(R.id.back_button);
+        ImageButton forwardButton = findViewById(R.id.forward_button);
 
         //collect our intent
         Intent intent = getIntent();
         Song song = intent.getParcelableExtra("Mysong");
+        final int[] currentIndex = {intent.getIntExtra("position", 0)};
 
         //now collect all property values
         mSongName.setText("Song Name " + song.getSongName());
         mSingerName.setText("Singer Name " + song.getSingerName());
         mImageResourceId.setImageResource(song.getImageResourceID());
 
-        backButton. setOnClickListener(new View.OnClickListener() {
+        forwardButton. setOnClickListener(new View.OnClickListener() {
             public void onClick (View view){
-                Intent intent=new Intent (NowPlayingActivity.this, PlaylistsActivity.class);
-                startActivity (intent);
+            position++;
+            listview = listView.position;
+
             }
+
 
         } );
 
