@@ -36,16 +36,16 @@ public class PlaylistsActivity extends AppCompatActivity {
 
         //create an arrayList of songs
         ArrayList<Song> songs = new ArrayList<Song>();
-        songs.add(new Song("song_1", "singer_1", R.drawable.song_icon));
-        songs.add(new Song("song_2", "singer_2", R.drawable.song_icon));
-        songs.add(new Song("song_3", "singer_3", R.drawable.song_icon));
-        songs.add(new Song("song_4", "singer_4", R.drawable.song_icon));
-        songs.add(new Song("song_5", "singer_5", R.drawable.song_icon));
-        songs.add(new Song("song_6", "singer_6", R.drawable.song_icon));
-        songs.add(new Song("song_7", "singer_7", R.drawable.song_icon));
-        songs.add(new Song("song_8", "singer_9", R.drawable.song_icon));
-        songs.add(new Song("song_10", "singer_10", R.drawable.song_icon));
-        songs.add(new Song("song_11", "singer_11", R.drawable.song_icon));
+        songs.add(new Song("song 1", "singer 1", R.drawable.song_icon));
+        songs.add(new Song("song 2", "singer 2", R.drawable.song_icon));
+        songs.add(new Song("song 3", "singer 3", R.drawable.song_icon));
+        songs.add(new Song("song 4", "singer 4", R.drawable.song_icon));
+        songs.add(new Song("song 5", "singer 5", R.drawable.song_icon));
+        songs.add(new Song("song 6", "singer 6", R.drawable.song_icon));
+        songs.add(new Song("song 7", "singer 7", R.drawable.song_icon));
+        songs.add(new Song("song 8", "singer 9", R.drawable.song_icon));
+        songs.add(new Song("song 10", "singer 10", R.drawable.song_icon));
+        songs.add(new Song("song 11", "singer 11", R.drawable.song_icon));
 
         // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
         // adapter knows how to create layouts for each item in the list, using the

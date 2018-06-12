@@ -44,29 +44,41 @@ public class NowPlayingActivity extends AppCompatActivity {
         TextView mSongName = findViewById(R.id.playing_song_name);
         TextView mSingerName = findViewById(R.id.playing_singer_name);
         ImageView mImageResourceId= findViewById(R.id.playing_song_item_icon);
+        ImageButton previousActivity = findViewById(R.id.go_to_previous_activity_button);
         ImageButton forwardButton = findViewById(R.id.forward_button);
 
         //collect our intent
         Intent intent = getIntent();
         Song song = intent.getParcelableExtra("Mysong");
-        final int[] currentIndex = {intent.getIntExtra("position", 0)};
+        final int position = intent.getIntExtra("position", 0);
 
         //now collect all property values
         mSongName.setText("Song Name " + song.getSongName());
         mSingerName.setText("Singer Name " + song.getSingerName());
         mImageResourceId.setImageResource(song.getImageResourceID());
 
-        forwardButton. setOnClickListener(new View.OnClickListener() {
-            public void onClick (View view){
-            position++;
-            listview = listView.position;
+//        forwardButton. setOnClickListener(new View.OnClickListener() {
+//            public void onClick (View view){
+//            listView.get(position+1);
+//
+//            }
+//
+//
+//        } );
 
+        previousActivity.setOnClickListener (new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                // Create a new intent to open the {@link PlaylistsActivity}
+                Intent playlistsIntent = new Intent(NowPlayingActivity.this, PlaylistsActivity.class);
+
+                // Start the new activity
+                startActivity(playlistsIntent);
             }
-
-
-        } );
-
+        });
     }
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
