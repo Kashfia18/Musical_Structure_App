@@ -39,12 +39,12 @@
         <activity
             android:name=".NowPlayingActivity"
             android:label="@string/nowPlaying"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".PlaylistsActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".PlaylistsActivity" />
         </activity>
     </application>
 

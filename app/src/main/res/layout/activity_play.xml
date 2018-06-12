@@ -3,36 +3,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:minHeight="?android:attr/listPreferredItemHeight"
     android:padding="16dp"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    tools:context="com.example.android.musical_structure_app.PlaylistsActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="16dp"
         android:layout_marginBottom="16dp"
-        android:scaleType="centerCrop">
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/previous_screen_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back_black_24dp" />
 
         <ImageView
             android:id="@+id/playing_song_item_icon"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="10"
-            android:layout_marginBottom="16dp" />
+            android:adjustViewBounds="true"
+            android:paddingBottom="8dp"/>
 
         <TextView
             android:id="@+id/playing_song_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
         <TextView
             android:id="@+id/playing_singer_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
@@ -41,24 +48,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
 
         <ImageButton
             android:id="@+id/back_button"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:src="@drawable/ic_skip_previous_black_24dp" />
 
         <ImageButton
             android:id="@+id/play_button"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:src="@drawable/ic_play_arrow_black_24dp" />
 
         <ImageButton
             android:id="@+id/forward_button"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:src="@drawable/ic_skip_next_black_24dp" />
 
     </LinearLayout>
