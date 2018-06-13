@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.Property;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +39,7 @@ public class NowPlayingActivity extends AppCompatActivity {
     Song currentSong;
     ArrayList<Song> songs;
     int position;
+    String mSongName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,9 +73,11 @@ public class NowPlayingActivity extends AppCompatActivity {
         //goes to the previous song.
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View arg0) {
+            public void onClick(View view) {
                  //Create a new intent to open the {@link PlaylistsActivity}
-                currentSong = songs.get(position - 1);
+                currentSong = songs.get(position + 1);
+//                mSongName.setText("Song Name " + currentSong.getSongName());
+                Log.i("current", "currentSong: "+ currentSong);
             }
         });
     }
