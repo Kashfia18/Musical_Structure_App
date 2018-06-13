@@ -82,7 +82,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         });
     }
 
-//This way you will guarantee that your back button will act the same way as the Up Button :
+    //This way you will guarantee that your back button will act the same way as the Up Button :
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
