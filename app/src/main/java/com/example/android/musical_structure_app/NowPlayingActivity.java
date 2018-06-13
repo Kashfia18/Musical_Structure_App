@@ -16,6 +16,7 @@
 package com.example.android.musical_structure_app;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.NavUtils;
@@ -34,7 +35,8 @@ import java.util.ArrayList;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
-    ArrayList<Song> songs;
+    Song currentSong;
+    int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,30 +44,35 @@ public class NowPlayingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_play);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         TextView mSongName = findViewById(R.id.playing_song_name);
         TextView mSingerName = findViewById(R.id.playing_singer_name);
         ImageView mImageResourceId = findViewById(R.id.playing_song_item_icon);
         ImageButton previousActivity = findViewById(R.id.go_to_previous_activity_button);
-        ImageButton forwardButton = findViewById(R.id.forward_button);
+        //goes to the previous song.
+        ImageButton backButton = findViewById(R.id.back_button);
+
+
 
         //collect our intent
         Intent intent = getIntent();
         Song song = intent.getParcelableExtra("Mysong");
+        ArrayList<Song> songs=getIntent().getParcelableArrayListExtra("key");
+        position = intent.getIntExtra("position", 0);
+        currentSong = songs.get (position);
+
 
         //now collect all property values
         mSongName.setText("Song Name " + song.getSongName());
         mSingerName.setText("Singer Name " + song.getSingerName());
         mImageResourceId.setImageResource(song.getImageResourceID());
 
-
-        previousActivity.setOnClickListener(new View.OnClickListener() {
+        //goes to the previous song.
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Create a new intent to open the {@link PlaylistsActivity}
-                Intent playlistsIntent = new Intent(NowPlayingActivity.this, PlaylistsActivity.class);
-
-                // Start the new activity
-                startActivity(playlistsIntent);
+                currentSong = songs.get(position - 1);
             }
         });
     }

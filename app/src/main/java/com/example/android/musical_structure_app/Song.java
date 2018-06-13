@@ -90,7 +90,7 @@ public class Song implements Parcelable {
 
         @Override
         public Song[] newArray(int size) {
-            return new Song[0];
+            return new Song[size];
         }
     };
 

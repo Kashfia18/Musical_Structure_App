@@ -35,7 +35,7 @@ public class PlaylistsActivity extends AppCompatActivity {
         setContentView(R.layout.song_list);
 
         //create an arrayList of songs
-        ArrayList<Song> songs = new ArrayList<Song>();
+        final ArrayList<Song> songs = new ArrayList<Song>();
         songs.add(new Song("song 1", "singer 1", R.drawable.song_icon));
         songs.add(new Song("song 2", "singer 2", R.drawable.song_icon));
         songs.add(new Song("song 3", "singer 3", R.drawable.song_icon));
@@ -72,6 +72,7 @@ public class PlaylistsActivity extends AppCompatActivity {
                 Intent intent = new Intent(PlaylistsActivity.this, NowPlayingActivity.class);
                 intent.putExtra("Mysong", (Parcelable) listItem);
                 intent.putExtra("positon",position);
+                intent.putParcelableArrayListExtra("key",songs);
                 startActivity(intent);
             }
         });
