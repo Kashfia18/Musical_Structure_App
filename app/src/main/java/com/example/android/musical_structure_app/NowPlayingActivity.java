@@ -36,6 +36,7 @@ import java.util.ArrayList;
 public class NowPlayingActivity extends AppCompatActivity {
 
     Song currentSong;
+    ArrayList<Song> songs;
     int position;
 
     @Override
@@ -57,7 +58,7 @@ public class NowPlayingActivity extends AppCompatActivity {
         //collect our intent
         Intent intent = getIntent();
         Song song = intent.getParcelableExtra("Mysong");
-        ArrayList<Song> songs=getIntent().getParcelableArrayListExtra("key");
+        songs=getIntent().getParcelableArrayListExtra("key");
         position = intent.getIntExtra("position", 0);
         currentSong = songs.get (position);
 
@@ -70,12 +71,13 @@ public class NowPlayingActivity extends AppCompatActivity {
         //goes to the previous song.
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // Create a new intent to open the {@link PlaylistsActivity}
+            public void onClick(View arg0) {
+                 //Create a new intent to open the {@link PlaylistsActivity}
                 currentSong = songs.get(position - 1);
             }
         });
     }
+
 //This way you will guarantee that your back button will act the same way as the Up Button :
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
