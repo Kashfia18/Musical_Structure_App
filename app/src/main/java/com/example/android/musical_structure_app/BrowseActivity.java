@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class BrowseActivity extends AppCompatActivity {
 
@@ -36,14 +37,14 @@ public class BrowseActivity extends AppCompatActivity {
 
         //create an arrayList of albums
         ArrayList<String> albums = new ArrayList<>();
-        albums.add(new String("Classical"));
-        albums.add(new String("Romance"));
-        albums.add(new String("Comedy"));
-        albums.add(new String("Rock"));
-        albums.add(new String("Party"));
-        albums.add(new String("Pop"));
-        albums.add(new String("Hip-hop"));
-        albums.add(new String("Kids"));
+        albums.add("Classical");
+        albums.add("Romance");
+        albums.add("Comedy");
+        albums.add("Rock");
+        albums.add("Party");
+        albums.add("Pop");
+        albums.add("Hip-hop");
+        albums.add("Kids");
 
 
         // Create an ArrayAdapter of strings, whose data source is a list of Strings. The

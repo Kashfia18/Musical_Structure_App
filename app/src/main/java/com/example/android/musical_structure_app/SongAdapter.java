@@ -10,8 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class SongAdapter extends ArrayAdapter <Song>{
+class SongAdapter extends ArrayAdapter <Song>{
 
     /**
      * This is our own custom constructor (it doesn't mirror a superclass constructor).
@@ -55,7 +56,7 @@ public class SongAdapter extends ArrayAdapter <Song>{
         ImageView iconImageView = listItemView.findViewById(R.id.song_item_icon);
         // Get the image resource ID from the currentSong object and
         // set the image to iconImageView
-        iconImageView.setImageResource(currentSong.getImageResourceID());
+        iconImageView.setImageResource(Objects.requireNonNull(currentSong).getImageResourceID());
 
         // Find the TextView in the list_item.xml layout with the ID song_name
         TextView songNameTextView = listItemView.findViewById(R.id.song_name);
@@ -64,7 +65,7 @@ public class SongAdapter extends ArrayAdapter <Song>{
         songNameTextView.setText(currentSong.getSongName ());
 
         // Find the TextView in the list_item.xml layout with the ID singer_name
-        TextView SingerNameTextView = (TextView) listItemView.findViewById(R.id.singer_name);
+        TextView SingerNameTextView = listItemView.findViewById(R.id.singer_name);
         // Get the singer name from the currentSong object and
         // set this text on the singerName TextView
         SingerNameTextView.setText(currentSong.getSingerName ());

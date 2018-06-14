@@ -1,9 +1,7 @@
 package com.example.android.musical_structure_app;
 
-import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Property;
 
 /**
  * Song represents the details of a song, displayed in the playlist.
@@ -14,17 +12,17 @@ public class Song implements Parcelable {
     /**
      * Name of the song
      */
-    private String mSongName;
+    private final String mSongName;
 
     /**
      * Name of the singer for each song
      */
-    private String mSingerName;
+    private final String mSingerName;
 
     /**
      * Resource Id of the song icon for each song.
      */
-    private int mImageResourceId;
+    private final int mImageResourceId;
 
     /**
      * Constructor-creates a new Song object.
@@ -82,7 +80,7 @@ public class Song implements Parcelable {
     }
 
     //constructor used for parcel. Called in the receiving activity, where we will collect values.
-    public Song(Parcel parcel) {
+    private Song(Parcel parcel) {
         mSongName = parcel.readString();
         mSingerName = parcel.readString();
         mImageResourceId = parcel.readInt();

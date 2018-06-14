@@ -19,18 +19,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PlaylistsActivity extends AppCompatActivity {
 
     //Declare a listView object for list of songs.
-    ListView listView;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class PlaylistsActivity extends AppCompatActivity {
 
 
         //create an arrayList of songs
-        ArrayList<Song> songs = new ArrayList<Song>();
+        ArrayList<Song> songs = new ArrayList<>();
         songs.add(new Song("song 1", "singer 1", R.drawable.song_icon));
         songs.add(new Song("song 2", "singer 2", R.drawable.song_icon));
         songs.add(new Song("song 3", "singer 3", R.drawable.song_icon));
