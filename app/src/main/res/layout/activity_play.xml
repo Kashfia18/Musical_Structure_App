@@ -1,76 +1,92 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Layout for a single list item -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<?xml version="1.0" encoding="utf-8"?><!-- Layout for the item that is playing -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context="com.example.android.musical_structure_app.PlaylistsActivity">
 
-
-    <ImageButton
-        android:id="@+id/go_to_previous_activity_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_arrow_back_black_24dp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
         android:orientation="vertical"
-        android:layout_marginBottom="16dp"
-        android:gravity="center_horizontal">
+        android:padding="@dimen/padding_activity_play_layout">
 
-        <ImageView
-            android:id="@+id/playing_song_item_icon"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            android:adjustViewBounds="true"
-            android:paddingBottom="8dp"/>
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/playing_song_name"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/playing_song_item_icon"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/song_icon"
+                android:paddingBottom="@dimen/paddingBottom_activity_play_image" />
 
-        <TextView
-            android:id="@+id/playing_singer_name"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            <TextView
+                android:id="@+id/playing_song_name"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/textColor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/playing_singer_name"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/paddingBottom_activity_play_text"
+                android:layout_weight="1"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/textColor"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/simpleSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_activity_play_layout"
+            android:background="@color/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/back_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/back_button"
+                android:src="@drawable/ic_skip_previous_black_24dp" />
+
+            <ImageButton
+                android:id="@+id/play_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/play_button"
+                android:src="@drawable/ic_play_arrow_black_24dp" />
+
+            <ImageButton
+                android:id="@+id/next_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/next_button"
+                android:src="@drawable/ic_skip_next_black_24dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_skip_previous_black_24dp" />
-
-        <ImageButton
-            android:id="@+id/play_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_play_arrow_black_24dp" />
-
-        <ImageButton
-            android:id="@+id/forward_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:src="@drawable/ic_skip_next_black_24dp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

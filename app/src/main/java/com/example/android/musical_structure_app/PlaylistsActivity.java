@@ -29,13 +29,21 @@ import java.util.ArrayList;
 
 public class PlaylistsActivity extends AppCompatActivity {
 
+    //Declare a listView object for list of songs.
+    ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.song_list);
+        //Along with updating the Android Manifest with the parent Activity this line is added in this activity
+        //to enable the arrow in the Action bar as the up arrow. IWhen clicked it will navigate to the parent activity
+        //which is the Main activity.
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         //create an arrayList of songs
-        final ArrayList<Song> songs = new ArrayList<Song>();
+        ArrayList<Song> songs = new ArrayList<Song>();
         songs.add(new Song("song 1", "singer 1", R.drawable.song_icon));
         songs.add(new Song("song 2", "singer 2", R.drawable.song_icon));
         songs.add(new Song("song 3", "singer 3", R.drawable.song_icon));
@@ -47,32 +55,34 @@ public class PlaylistsActivity extends AppCompatActivity {
         songs.add(new Song("song 10", "singer 10", R.drawable.song_icon));
         songs.add(new Song("song 11", "singer 11", R.drawable.song_icon));
 
-        // Create an {@link ArrayAdapter}, whose data source is a list of Strings. The
+        // Create a custom ArrayAdapter, SongAdapter, whose data source is an ArrayList of songs. The
         // adapter knows how to create layouts for each item in the list, using the
-        // simple_list_item_1.xml layout resource defined in the Android framework.
-        // This list item layout contains a single {@link TextView}, which the adapter will set to
-        // display a single word.
+        // list_item.xml layout resource defined in the layout.
+        // This list item layout contains two ImageViews and 2 TextViews, which the adapter will set to
+        // display the song icon, play icon and song name, singer name respectively.
         SongAdapter playlistsAdapter = new SongAdapter (this,songs);
 
-        // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
-        // There should be a {@link ListView} with the view ID called list, which is declared in the
+        // Find the ListView object in the view hierarchy of the Activity.
+        // There should be a ListView with the view ID called list, which is declared in the
         // song_list.xml file.
-        final ListView listView = findViewById(R.id.list);
+        listView = findViewById(R.id.list);
 
-        // Make the {@link ListView} use the {@link ArrayAdapter} we created above, so that the
-        // {@link ListView} will display list items for each word in the list of songs.
-        // Do this by calling the setAdapter method on the {@link ListView} object and pass in
-        // 1 argument, which is the {@link ArrayAdapter} with the variable name itemsAdapter.
+        // Make the ListView use the SongAdapter we created above, so that the
+        // ListView will display list items for each song in the list of songs.
+        // Do this by calling the setAdapter method on the ListView object and pass in
+        // 1 argument, which is the SongAdapter with the variable name playlistsAdapter.
         listView.setAdapter(playlistsAdapter);
 
+        //set a click listener on the list items of the AdapterView (listView).
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            // The code in this method will be executed when the each of list items is clicked on.
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Object listItem = listView.getItemAtPosition(position);
                 Intent intent = new Intent(PlaylistsActivity.this, NowPlayingActivity.class);
+                //Transfer data of the listView from this activity to Now Playing activity,
+                //for playing the song that is clicked on
                 intent.putExtra("Mysong", (Parcelable) listItem);
-                intent.putExtra("positon",position);
-                intent.putParcelableArrayListExtra("key",songs);
                 startActivity(intent);
             }
         });

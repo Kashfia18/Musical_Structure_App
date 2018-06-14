@@ -6,31 +6,33 @@ import android.os.Parcelable;
 import android.util.Property;
 
 /**
- * {@link Song} represents a vocabulary word that the user wants to learn.
- * It contains a default translation and a Miwok translation for that word.
+ * Song represents the details of a song, displayed in the playlist.
+ * It contains the song Name, Singer name and icon of the song.
  */
 public class Song implements Parcelable {
 
     /**
-     * Default translation of the word.
+     * Name of the song
      */
     private String mSongName;
 
     /**
-     * Miwok translation of the word
+     * Name of the singer for each song
      */
     private String mSingerName;
 
+    /**
+     * Resource Id of the song icon for each song.
+     */
     private int mImageResourceId;
 
     /**
-     * Constructor-creates a new word object.
+     * Constructor-creates a new Song object.
      *
-     * @param songName        is the word in Miwok Language
-     * @param singerName      is the word in a language the user is already familiar with.
-     * @param imageresourceId is the word in a language the user is already familiar with.
+     * @param songName        is the song name
+     * @param singerName      is the singer name
+     * @param imageresourceId is the image resource id.
      */
-
     public Song(String songName, String singerName, int imageresourceId) {
         mSongName = songName;
         mSingerName = singerName;
@@ -38,7 +40,7 @@ public class Song implements Parcelable {
     }
 
     /**
-     * get the default translation of the word.
+     * get the song name
      *
      * @return String type
      */
@@ -47,7 +49,7 @@ public class Song implements Parcelable {
     }
 
     /**
-     * get the Miwok translation of the word
+     * get the singer name.
      *
      * @return String type
      */
@@ -55,6 +57,11 @@ public class Song implements Parcelable {
         return mSingerName;
     }
 
+    /**
+     * get the song image resource id.
+     *
+     * @return int type
+     */
     public int getImageResourceID() {
         return mImageResourceId;
     }
@@ -64,7 +71,8 @@ public class Song implements Parcelable {
         return 0;
     }
 
-    //write object values to parcel for storage
+    //write object values to parcel for storage. In this method we write all teh properties of Song object
+    //to parcel in preparation of transfer. write method is used to add each of the properties.
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(mSongName);
@@ -73,7 +81,7 @@ public class Song implements Parcelable {
 
     }
 
-    //constructor used for parcel
+    //constructor used for parcel. Called in the receiving activity, where we will collect values.
     public Song(Parcel parcel) {
         mSongName = parcel.readString();
         mSingerName = parcel.readString();
@@ -90,7 +98,7 @@ public class Song implements Parcelable {
 
         @Override
         public Song[] newArray(int size) {
-            return new Song[size];
+            return new Song[0];
         }
     };
 

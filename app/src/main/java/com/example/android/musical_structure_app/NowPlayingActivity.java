@@ -36,53 +36,34 @@ import java.util.ArrayList;
 
 public class NowPlayingActivity extends AppCompatActivity {
 
-    Song currentSong;
-    ArrayList<Song> songs;
-    int position;
-    String mSongName;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play);
+        //Along with updating the Android Manifest with the parent Activity this line is added in this activity
+        //to enable the arrow in the Action bar as the up arrow. IWhen clicked it will navigate to the parent activity
+        //which is the playlists activity.
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
+        // Find the TextViews and ImageView objects in the view hierarchy of the Activity.
+        // These views are declared in the activity_play.xml file.
         TextView mSongName = findViewById(R.id.playing_song_name);
         TextView mSingerName = findViewById(R.id.playing_singer_name);
         ImageView mImageResourceId = findViewById(R.id.playing_song_item_icon);
-        ImageButton previousActivity = findViewById(R.id.go_to_previous_activity_button);
-        //goes to the previous song.
-        ImageButton backButton = findViewById(R.id.back_button);
 
-
-
-        //collect our intent
+        //collect the intent object
         Intent intent = getIntent();
+        // the constructor is called and a Song instance is created
         Song song = intent.getParcelableExtra("Mysong");
-        songs=getIntent().getParcelableArrayListExtra("key");
-        position = intent.getIntExtra("position", 0);
-        currentSong = songs.get (position);
 
-
-        //now collect all property values
-        mSongName.setText("Song Name " + song.getSongName());
-        mSingerName.setText("Singer Name " + song.getSingerName());
+        //now collect all values of song class that was converted to a parcel.
+        // Also the values are set to the respective views.
+        mSongName.setText("Song Name: " + song.getSongName());
+        mSingerName.setText("Singer Name: " + song.getSingerName());
         mImageResourceId.setImageResource(song.getImageResourceID());
-
-        //goes to the previous song.
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                 //Create a new intent to open the {@link PlaylistsActivity}
-                currentSong = songs.get(position + 1);
-//                mSongName.setText("Song Name " + currentSong.getSongName());
-                Log.i("current", "currentSong: "+ currentSong);
-            }
-        });
     }
-
-    //This way you will guarantee that your back button will act the same way as the Up Button :
+    //This method is called when the back button is clicked.
+    // This way it is guarantee that the back button will act the same way as the Up Button.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

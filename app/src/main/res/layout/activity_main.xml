@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,28 +8,28 @@
     tools:context="com.example.android.musical_structure_app.MainActivity">
 
     <TextView
+        style="@style/CategoryStyle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        style="@style/CategoryStyle"
-        android:text="@string/welcome_message"/>
+        android:text="@string/welcome_message" />
 
     <Button
-        android:layout_height="0dp"
-        android:layout_weight="1"
         android:id="@+id/playlists"
         style="@style/CategoryStyle"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/activity_layout_marginBottom"
+        android:layout_weight="1"
         android:background="@color/colorAccent"
-        android:text="@string/playlists"
-        android:layout_marginBottom="@dimen/bottom_layout_marginBottom"/>
+        android:text="@string/playlists" />
 
     <Button
-        android:layout_height="0dp"
-        android:layout_weight="1"
         android:id="@+id/browse"
         style="@style/CategoryStyle"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/activity_layout_marginBottom"
+        android:layout_weight="1"
         android:background="@color/colorAccent"
-        android:text="@string/browse"
-        android:layout_marginBottom="@dimen/bottom_layout_marginBottom"/>
+        android:text="@string/browse" />
 
 </LinearLayout>

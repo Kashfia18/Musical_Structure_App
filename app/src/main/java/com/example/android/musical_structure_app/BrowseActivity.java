@@ -17,7 +17,8 @@ package com.example.android.musical_structure_app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 
 import java.util.ArrayList;
 
@@ -26,9 +27,41 @@ public class BrowseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_play);
+        setContentView(R.layout.browse_grid);
+        //Along with updating the Android Manifest with the parent Activity this line is added in this activity
+        //to enable the arrow in the Action bar as the up arrow. IWhen clicked it will navigate to the parent activity
+        //which is the Main activity.
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        //create an arrayList of albums
+        ArrayList<String> albums = new ArrayList<>();
+        albums.add(new String("Classical"));
+        albums.add(new String("Romance"));
+        albums.add(new String("Comedy"));
+        albums.add(new String("Rock"));
+        albums.add(new String("Party"));
+        albums.add(new String("Pop"));
+        albums.add(new String("Hip-hop"));
+        albums.add(new String("Kids"));
 
+
+        // Create an ArrayAdapter of strings, whose data source is a list of Strings. The
+        // adapter knows how to create layouts for each item in the grid, using the
+        // browse_item.xml layout resource defined in the layout.
+        // This grid item layout contains a single TextView, which the adapter will set to
+        // display a single album.
+        ArrayAdapter<String> albumListAdapter = new ArrayAdapter<>(this, R.layout.browse_item, albums);
+
+        // Find the gridView object in the view hierarchy of the Activity.
+        // There should be a gridView with the view ID called grid, which is declared in the
+        // browse_grid.xml file.
+        GridView gridView = findViewById(R.id.grid);
+
+        // Make the gridView} use the ArrayAdapter we created above, so that the
+        // gridView will display list items for each album in the list of albums.
+        // Do this by calling the setAdapter method on the gridView object and pass in
+        // 1 argument, which is the ArrayAdapter with the variable name albumListAdapter.
+        gridView.setAdapter(albumListAdapter);
     }
 }

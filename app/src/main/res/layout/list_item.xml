@@ -4,32 +4,47 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    android:orientation="horizontal"
     android:minHeight="?android:attr/listPreferredItemHeight"
-    android:padding="16dp">
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_list_item_layout">
 
     <ImageView
         android:id="@+id/song_item_icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        android:layout_width="@dimen/image_icon_list_item_width"
+        android:layout_height="@dimen/image_icon_list_item_height"
+        android:contentDescription="@string/song_icon" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingLeft="16dp">
+        android:paddingLeft="@dimen/padding_between_song_icon_and_text"
+        android:paddingStart="@dimen/padding_between_song_icon_and_text">
 
         <TextView
             android:id="@+id/song_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/textColor"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/singer_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/textColor"
+            android:textStyle="bold" />
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="@dimen/image_icon_list_item_width"
+        android:layout_height="@dimen/image_icon_list_item_height"
+        android:layout_gravity="end"
+        android:contentDescription="@string/play_icon"
+        android:src="@drawable/green_play_icon" />
 
 </LinearLayout>

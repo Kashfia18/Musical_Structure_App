@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">Musical_Structure_App</string>
     <string name="welcome_message">Let\'s rock together!</string>
-    <string name="playlists">Playlists</string>
-    <string name="browse">Browse</string>
+    <string name="playlists">Playlist</string>
+    <string name="browse">Browse Station</string>
     <string name="nowPlaying">Now playing</string>
+    <string name="song_icon">Icon of the song</string>
+    <string name="play_icon">play song</string>
+    <string name="back_button">button to play previous song in list</string>
+    <string name="play_button">button to play song</string>
+    <string name="next_button">button to play next song in list</string>
+
 </resources>
